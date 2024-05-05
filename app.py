@@ -39,11 +39,11 @@ ks.initialize_app_config(
     show_function_calls = False,
     page_title = "RedLiner",
     page_icon = "✒️", # can also be a URL
-    initial_sidebar_state = "collapsed", # or "expanded"
+    initial_sidebar_state = "expanded", # or "expanded"
     menu_items = {
             "Get Help": "https://github.com/oneilsh/redliner",
             "Report a Bug": "https://github.com/oneilsh/redliner/issues",
-            "About": "RedLiner is built on GPT-4, Streamlit, and Kani.",
+            "About": "RedLiner is built on GPT-4, Streamlit, zhudotexe/kani, hourfu/redlines, and oneilsh/kani-utils.",
         }
 )
 
@@ -61,10 +61,11 @@ class RedlineKani(StreamlitKani):
 
         super().__init__(*args, **kwargs)
 
-        self.greeting = "Hello, I'm RedLiner, an AI-driven copy editor. You can ask me to edit or review text, and I'll provide feedback and proposed changes."
-        self.description = "An AI-driven copy editor."
+        self.greeting = "Hello, I'm an AI copy editor powered by GPT-4. You can ask me to edit or review text, and I'll provide feedback and proposed changes."
+        self.description = "" # "An AI-driven copy editor."
         self.avatar = "✒️"
         self.user_avatar = "👤"
+        self.name = "" # "RedLiner"
 
 
     @ai_function()
