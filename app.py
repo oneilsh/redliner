@@ -22,6 +22,7 @@ from kani.engines.openai import OpenAIEngine
 import streamlit as st
 import pandas as pd
 
+import logging
 
 ########################
 ##### 1 - Configuration
@@ -57,12 +58,15 @@ class RedlineKani(StreamlitKani):
     """A Kani that can use the redline library to compute diffs between text inputs."""
 
     def __init__(self, *args, **kwargs):
+        # disable logging for this agent
+        st.session_state.logger.setLevel(logging.CRITICAL)
+
         kwargs['system_prompt'] = 'You are a professional editor. Provide the user feedback and make suggested edits. Always display the changes between the original and edited text.'
 
         super().__init__(*args, **kwargs)
 
-        self.greeting = "Hello, I'm an AI copy editor powered by GPT-4. You can ask me to edit or review text, and I'll provide feedback and proposed changes."
-        self.description = "" # "An AI-driven copy editor."
+        self.greeting = "Hello! I am an AI copy editor powered by GPT-4. You can ask me to edit or review your text, and I'll provide feedback and suggest changes. How can I help you today?"
+        self.description = "*Data are not logged or stored in this application, but are transmitted to a third party API ([privacy policy](https://openai.com/enterprise-privacy)).*" # "An AI-driven copy editor."
         self.avatar = "✒️"
         self.user_avatar = "👤"
         self.name = "" # "RedLiner"
