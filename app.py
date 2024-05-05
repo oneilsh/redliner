@@ -36,10 +36,10 @@ dotenv.load_dotenv()
 # see more at https://docs.streamlit.io/library/api-reference/utilities/st.set_page_config
 # this function MUST be run first
 ks.initialize_app_config(
-    show_function_calls = True,
+    show_function_calls = False,
     page_title = "RedLiner",
     page_icon = "✒️", # can also be a URL
-    initial_sidebar_state = "expanded", # or "expanded"
+    initial_sidebar_state = "collapsed", # or "expanded"
     menu_items = {
             "Get Help": "https://github.com/oneilsh/redliner",
             "Report a Bug": "https://github.com/oneilsh/redliner/issues",
@@ -57,13 +57,13 @@ class RedlineKani(StreamlitKani):
     """A Kani that can use the redline library to compute diffs between text inputs."""
 
     def __init__(self, *args, **kwargs):
-        kwargs['system_prompt'] = 'You are a professional editor. You may be asked to review or improve text. Provide the user feedback, and make suggested edits, displaying them to the user.'
+        kwargs['system_prompt'] = 'You are a professional editor. Provide the user feedback and make suggested edits. Always display the changes between the original and edited text.'
 
         super().__init__(*args, **kwargs)
 
         self.greeting = "Hello, I'm an editing assistant. You can ask me to review or improve text."
         self.description = "A professional editor."
-        self.avatar = "🖍️"
+        self.avatar = "✒️"
         self.user_avatar = "👤"
 
 
