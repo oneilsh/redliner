@@ -61,8 +61,8 @@ class RedlineKani(StreamlitKani):
 
         super().__init__(*args, **kwargs)
 
-        self.greeting = "Hello, I'm an editing assistant. You can ask me to review or improve text."
-        self.description = "A professional editor."
+        self.greeting = "Hello, I'm RedLiner, an AI-driven copy editor. You can ask me to edit or review text, and I'll provide feedback and proposed changes."
+        self.description = "An AI-driven copy editor."
         self.avatar = "✒️"
         self.user_avatar = "👤"
 
@@ -87,7 +87,7 @@ engine = OpenAIEngine(os.environ["OPENAI_API_KEY"], model="gpt-4-turbo-2024-04-0
 # Agents are keyed by their name, which is what the user will see in the UI
 def get_agents():
     return {
-            "Editor Agent": RedlineKani(engine, prompt_tokens_cost = 0.01, completion_tokens_cost = 0.03),
+            "RedLiner": RedlineKani(engine, prompt_tokens_cost = 0.01, completion_tokens_cost = 0.03),
            }
 
 
