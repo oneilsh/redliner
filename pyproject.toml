@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "redliner"
+version = "0.1.0"
+description = "An AI Copy Editor"
+authors = ["Shawn O'Neil <shawn@tislab.org>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+kani-utils = {git = "https://github.com/oneilsh/kani-utils.git"}
+redlines = "^0.4.2"
+streamlit = "^1.34.0"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
