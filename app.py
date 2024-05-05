@@ -74,9 +74,22 @@ class RedlineKani(StreamlitKani):
                      text2: Annotated[str, AIParam(desc="Edited text.")]):
         """Display changes between two versions of text."""
         from redlines import Redlines
-        
-        result = Redlines(text1, text2).output_markdown
-        self.render_in_streamlit_chat(lambda: st.markdown(result, unsafe_allow_html=True))
+
+        result = Redlines(text1, text2)
+        result = result.compare()
+
+        def render_result():
+            tab1, tab2, tab3 = st.tabs(["Diff", "Original", "Edited"])
+            with tab1:
+                st.markdown(result, unsafe_allow_html=True)
+
+            with tab2:
+                st.markdown(text1)
+
+            with tab3:
+                st.markdown(text2)
+
+        self.render_in_streamlit_chat(render_result)
 
         return "<!-- the result has been displayed in the chat -->"
 
