@@ -1,8 +1,2 @@
-[tool.poetry]
-authors = ["Shawn O'Neil <oneilsh@gmail.com>"]
-license = "MIT"
-package-mode = false
-
-
 [theme]
 base = "light"
